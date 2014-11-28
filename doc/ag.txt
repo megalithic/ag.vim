@@ -155,7 +155,7 @@ The first two should always look something like: >
     ag#Ag('grep<bang>', <a-args>, ...)
 <
 But the "options" argument is a dictionary.  You can put the following into
-the dictionary: 
+the dictionary:
 >
     'current_file_ext': 1
 <
@@ -193,11 +193,13 @@ T                   open in new tab silently.
 
 h                   open in horizontal split.
 
-H                  open in horizontal split silently.
+H                   open in horizontal split silently.
 
 v                   open in vertical split.
 
 gv                  open in vertical split silently.
+
+gvc                 open in vertical split and close the quickfix window.
 
 q                   close the quickfix window.
 
@@ -206,7 +208,7 @@ You can customize all of the mappings using the
 g:ag_results_mapping_replacements dictionary.  The default values for the
 dictionary are: >
 
-  { 
+  {
     'open_and_close':          'e'
     'open':                    'o,<cr>'
     'preview_open':            'go'
@@ -215,6 +217,7 @@ dictionary are: >
     'horizontal_split':        'h'
     'horizontal_split_silent': 'H'
     'vertical_split':          'v'
+    'vertical_split':          'gvc'
     'vertical_split_silent':   'gv'
     'quit':                    'q'
   }

@@ -39,6 +39,7 @@ let s:ag_results_mapping = {
   \   'horizontal_split_silent' : 'H',
   \   'vertical_split'          : 'v',
   \   'vertical_split_silent'   : 'gv',
+  \   'vertical_split_and_close': 'gvc',
   \   'quit'                    : 'q'
   \ }
 
@@ -87,7 +88,7 @@ endfunction
 
 function! ag#Ag(cmd, args, opts)
   let l:ag_args = ""
-  
+
   let l:opts = a:opts
 
   " Handle the types of files to search
@@ -171,6 +172,7 @@ function! ag#Ag(cmd, args, opts)
       call ag#ApplyMapping('preview_open', '<CR>:' . l:matches_window_prefix . 'open<CR>')
       call ag#ApplyMapping('quit', ':' . l:matches_window_prefix . 'close<CR>')
 
+      call ag#ApplyMapping('vertical_split_and_close', '<C-w><CR><C-w>H<C-W>b<C-W>J<C-W>t:' . l:matches_window_prefix . 'close<CR>')
       call ag#ApplyMapping('vertical_split_silent', ':let b:height=winheight(0)<CR><C-w><CR><C-w>H:' . l:matches_window_prefix . 'open<CR><C-w>J:exe printf(":normal %d\<lt>c-w>_", b:height)<CR>')
       " Interpretation:
       " :let b:height=winheight(0)<CR>                      Get the height of the quickfix/location list window
